@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>#7: calculator</title>
+
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+      <div class="hardw-cl sup">
+         <div class="flash"></div>
+         <div class="audio"></div>
+         <div class="cam"></div>
+      </div>
+      <div class="screen-calc">
+         <div class="display">
+            <div hidden id="displayValue">0</div>
+            <div>
+               <p hidden class="calc-preview"></p>
+               <!-- <i>[x]</i> -->
+            </div>
+         </div>
+         <hr/>
+         <div class="section-buttons">
+            <div class="btns">
+               <button class="button red">C</button>
+               <button class="button green">( )</button>
+               <button class="button green">%</button>
+               <button class="button green" onclick="CalcAction('/')">/</button>
+            </div>
+            
+            <div class="btns">
+               <button class="button" onclick="AddNumber(9)">9</button> <!--OK-->
+               <button class="button" onclick="AddNumber(8)">8</button>
+               <button class="button" onclick="AddNumber(7)">7</button>
+               <button class="button green" onclick="CalcAction('x')">x</button>
+            </div>
+            
+            <div class="btns">
+               <button class="button" onclick="AddNumber(6)">6</button>
+               <button class="button" onclick="AddNumber(5)">5</button>
+               <button class="button" onclick="AddNumber(4)">4</button>
+               <button class="button green" onclick="CalcAction('-')" > - </button>
+            </div>
+            
+            <div class="btns">
+               <button class="button" onclick="AddNumber(3)">3</button>
+               <button class="button" onclick="AddNumber(2)">2</button>
+               <button class="button" onclick="AddNumber(1)">1</button>
+               <button class="button green" onclick="CalcAction('+')">+</button>
+            </div>
+
+            <div class="btns">
+               <button class="button"> +/- </button>
+               <button class="button" onclick="AddNumber(0)">0</button>
+               <button class="button">.</button>
+               <button class="button green" onclick="Result()"> = </button>
+            </div>
+         </div>
+      </div>
+
+      <div class="hardw-cl sub">
+         <div class="home"></div>
+      </div>
+
+   </div>
+
+   <script src="script.js"></script>
+</body>
+</html>

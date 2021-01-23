@@ -1,0 +1,224 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   color: #BBB;
+}
+
+input:focus {
+   border: none 0;
+   box-shadow: 0 0 0 0;
+   outline: none;
+}
+
+html, body {
+   width: 100%;
+   min-height: 100vh;
+
+   background-color: #1a1a1f;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   align-items: center;
+}
+
+.container {
+   height: 650px;
+   width: 370px;
+
+   background-color: #111;
+   border-radius: 25px;
+   border: 5px ridge #555;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   box-shadow: 0 0 50px 5px rgb(255, 255, 255, .3);
+}
+
+.hardw-cl.sup {
+   width: 100%;
+   height: 30px;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.hardw-cl.sup .flash {
+   width: 9px;
+   height: 9px;
+   border-radius: 50%;
+
+   background-image: radial-gradient(circle, #fff, #000);
+}
+
+.hardw-cl.sup .audio {
+   width: 100px;
+   height: 3px;
+   border-radius:30%;
+   background-image: radial-gradient(#222 50%, rgb(255, 255, 255, .2));
+   margin: 0 30px 0 40px;
+}
+.hardw-cl.sup .cam {
+   width: 7px;
+   height: 7px;
+   border-radius: 50%;
+
+   background-image: radial-gradient(circle, #000 30%, #fff, #000);
+   border: 1px solid #000;
+}
+
+.hardw-cl.sub {
+   width: 100%;
+   height: 40px;
+   margin-top: 5px;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.hardw-cl.sub .home {
+   width: 95px;
+   height: calc(100% - 10px);
+   border-radius: 18px;
+   margin: 10px 0;
+
+   border: 1.9px solid #222;
+}
+
+.screen-calc {
+   min-height:560px;
+   width: 347px;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+
+   background-color: #000;
+  
+   box-shadow: 0 0 1px .3px rgb(255, 255, 255, .2);
+}
+.screen-calc .display {
+   width: 100%;
+   height: 100%;
+   justify-self: flex-start;
+
+   position: relative;
+   border-radius: 17px;
+   
+}
+
+.screen-calc .display #displayValue {
+   width: 100%;
+   height: 70%;
+   border-radius: 17px 17px 0 0;
+
+   font-size: 30px;
+   padding: 15px 15px;
+
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+
+   position: absolute;
+   background-color: #000;
+   border: none;
+}
+
+.screen-calc .display div:nth-child(2) {
+   height: auto;
+   width: 100%;
+
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   justify-content: center;
+
+   position: absolute;
+   bottom: 0;
+}
+
+.screen-calc .display div p {
+   line-height: 30px;
+   padding: 10px;
+   font-size: 24px;
+   color: #666;
+}
+/* icon
+.screen-calc .display div i {
+} */
+
+.screen-calc hr {
+   width: 90%;
+   height: .3px;
+
+   border: none;
+   border-radius: 10px;
+   
+   background-color: #222;
+   
+   margin: 10px 10px 0;
+
+   box-shadow: 0 0 0 .05px;
+}
+
+.section-buttons {
+   text-align: center;
+   align-self: flex-end;
+
+   padding: 14px 0;
+   margin-left: auto;
+   margin-right: auto;
+}
+.section-buttons .btns {
+   height: 55px;
+   margin: 7px 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.section-buttons .button {
+   width: 60px;
+   height: 55px;
+   margin: 8px;
+   line-height: 55px;
+
+   border-width: 1px;
+   border: none;
+   border-radius: 50%;
+   font-size: 22px;
+   
+   color: #fff;
+   background-color: #232323;
+   transition: .3s;
+   
+   cursor: pointer;
+}
+.section-buttons .button:focus {
+   outline: none;
+}
+.section-buttons .button:active {
+   background-color: #444;
+   transform: scale(1.3);  
+   transition: .2s;
+}
+
+.section-buttons .button.green {
+   font-weight: bold;
+   color: #12ef5f;
+}
+
+.section-buttons .button.red{
+   font-weight: bold;
+   color: #ff0025;
+}
+.section-buttons .btns:nth-last-child(1) button:nth-last-child(1){ /*Select button on =*/
+   background: #12ef5f;
+   color: #222;
+   font-size: 25px;
+}
