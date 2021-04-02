@@ -6,6 +6,7 @@
    <title>#7: calculator</title>
 
    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 <body>
    <div class="container">
@@ -19,44 +20,44 @@
             <div hidden id="displayValue">0</div>
             <div>
                <p hidden class="calc-preview"></p>
-               <!-- <i>[x]</i> -->
+               <i class="fas fa-backspace" onclick="deletar()"></i> <!-- delete <= -->
             </div>
          </div>
          <hr/>
          <div class="section-buttons">
             <div class="btns">
-               <button class="button red">C</button>
-               <button class="button green">( )</button>
-               <button class="button green">%</button>
-               <button class="button green" onclick="CalcAction('/')">/</button>
+               <button class="button red" onclick="ClearAll()"><i class="fab fa-codiepie"></i></button> <!-- Clear -->
+               <button class="button green" style="font-weight: bold;">( )</button>
+               <button class="button green"><i class="fas fa-percentage"></i></button> <!-- percentage -->
+               <button class="button green" onclick="AddCaracter(' / ')" onclick="dividir()"><i class="fas fa-divide"></i></button>
             </div>
             
             <div class="btns">
-               <button class="button" onclick="AddNumber(9)">9</button> <!--OK-->
-               <button class="button" onclick="AddNumber(8)">8</button>
-               <button class="button" onclick="AddNumber(7)">7</button>
-               <button class="button green" onclick="CalcAction('x')">x</button>
+               <button class="button" onclick="AddCaracter(9)">9</button>
+               <button class="button" onclick="AddCaracter(8)">8</button>
+               <button class="button" onclick="AddCaracter(7)">7</button>
+               <button class="button green" onclick="AddCaracter(' x ')" onclick="multiplicar()"><i class="fas fa-times"></i></button>
             </div>
             
             <div class="btns">
-               <button class="button" onclick="AddNumber(6)">6</button>
-               <button class="button" onclick="AddNumber(5)">5</button>
-               <button class="button" onclick="AddNumber(4)">4</button>
-               <button class="button green" onclick="CalcAction('-')" > - </button>
+               <button class="button" onclick="AddCaracter(6)">6</button>
+               <button class="button" onclick="AddCaracter(5)">5</button>
+               <button class="button" onclick="AddCaracter(4)">4</button>
+               <button class="button green" onclick="AddCaracter(' - ')" onclick="subtrair()"><i class="fas fa-minus"></i></button>
             </div>
             
             <div class="btns">
-               <button class="button" onclick="AddNumber(3)">3</button>
-               <button class="button" onclick="AddNumber(2)">2</button>
-               <button class="button" onclick="AddNumber(1)">1</button>
-               <button class="button green" onclick="CalcAction('+')">+</button>
+               <button class="button" onclick="AddCaracter(3)">3</button>
+               <button class="button" onclick="AddCaracter(2)">2</button>
+               <button class="button" onclick="AddCaracter(1)">1</button>
+               <button class="button green" onclick="AddCaracter(' + ')" onclick="somar()"><i class="fas fa-plus"></i></button>
             </div>
 
             <div class="btns">
                <button class="button"> +/- </button>
-               <button class="button" onclick="AddNumber(0)">0</button>
+               <button class="button" onclick="AddCaracter(0)">0</button>
                <button class="button">.</button>
-               <button class="button green" onclick="Result()"> = </button>
+               <button class="button green" onclick="Result()"><i class="fas fa-equals"></i></button>
             </div>
          </div>
       </div>

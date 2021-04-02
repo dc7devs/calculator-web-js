@@ -130,7 +130,7 @@ html, body {
 }
 
 .screen-calc .display div:nth-child(2) {
-   height: auto;
+   height: 30px;
    width: 100%;
 
    display: flex;
@@ -148,9 +148,11 @@ html, body {
    font-size: 24px;
    color: #666;
 }
-/* icon
-.screen-calc .display div i {
-} */
+
+.screen-calc .display .fas.fa-backspace::before {
+   padding: 10px;
+   cursor: pointer;
+}
 
 .screen-calc hr {
    width: 90%;
@@ -208,17 +210,18 @@ html, body {
    transition: .2s;
 }
 
-.section-buttons .button.green {
+.section-buttons .button.green i{
    font-weight: bold;
    color: #12ef5f;
 }
 
-.section-buttons .button.red{
+.section-buttons .button.red i{
    font-weight: bold;
    color: #ff0025;
 }
-.section-buttons .btns:nth-last-child(1) button:nth-last-child(1){ /*Select button on =*/
-   background: #12ef5f;
+.section-buttons .btns:nth-last-child(1) button:nth-last-child(1) {
+   background-color: #12ef5f;
+}
+.section-buttons .btns:nth-last-child(1) button:nth-last-child(1) i{ /*Select button on =*/
    color: #222;
-   font-size: 25px;
 }
