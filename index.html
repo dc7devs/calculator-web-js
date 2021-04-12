@@ -3,9 +3,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>#7: calculator</title>
+   <title>Calculator</title>
 
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="./style/style.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 <body>
@@ -17,48 +17,50 @@
       </div>
       <div class="screen-calc">
          <div class="display">
-            <div hidden id="displayValue">0</div>
+            <p hidden id="displayValue">0</p>
             <div>
                <p hidden class="calc-preview"></p>
-               <i class="fas fa-backspace" onclick="deletar()"></i> <!-- delete <= -->
+               <i class="fas fa-backspace" onclick="back()"></i>
             </div>
          </div>
          <hr/>
          <div class="section-buttons">
-            <div class="btns">
-               <button class="button red" onclick="ClearAll()"><i class="fab fa-codiepie"></i></button> <!-- Clear -->
-               <button class="button green" style="font-weight: bold;">( )</button>
-               <button class="button green"><i class="fas fa-percentage"></i></button> <!-- percentage -->
-               <button class="button green" onclick="AddCaracter(' / ')" onclick="dividir()"><i class="fas fa-divide"></i></button>
-            </div>
+            <table class="btns">
+               <tr>
+                  <td><button class="button red" onclick="clean()"><i class="fab fa-codiepie"></i></button></td>     <!-- Clear -->
+                  <td><button class="button green" style="font-weight: bold;">( )</button></td>
+                  <td><button class="button green"><i class="fas fa-percentage"></i></button></td>    <!-- percentage -->
+                  <td><button class="button green" onclick="insert('/')"><i class="fas fa-divide"></i></button></td>    <!--divisão-->
+               </tr>
             
-            <div class="btns">
-               <button class="button" onclick="AddCaracter(9)">9</button>
-               <button class="button" onclick="AddCaracter(8)">8</button>
-               <button class="button" onclick="AddCaracter(7)">7</button>
-               <button class="button green" onclick="AddCaracter(' x ')" onclick="multiplicar()"><i class="fas fa-times"></i></button>
-            </div>
+               <tr>
+                  <td><button class="button" onclick="insert('9')">9</button></td>
+                  <td><button class="button" onclick="insert('8')">8</button></td>
+                  <td><button class="button" onclick="insert('7')">7</button></td>
+                  <td><button class="button green" onclick="insert('*')"><i class="fas fa-times"></i></button></td> <!--Multipliacação-->
+               </tr>
             
-            <div class="btns">
-               <button class="button" onclick="AddCaracter(6)">6</button>
-               <button class="button" onclick="AddCaracter(5)">5</button>
-               <button class="button" onclick="AddCaracter(4)">4</button>
-               <button class="button green" onclick="AddCaracter(' - ')" onclick="subtrair()"><i class="fas fa-minus"></i></button>
-            </div>
+               <tr>
+                  <td><button class="button" onclick="insert('6')">6</button></td>
+                  <td><button class="button" onclick="insert('5')">5</button></td>
+                  <td><button class="button" onclick="insert('4')">4</button></td>
+                  <td><button class="button green" onclick="insert('-')"><i class="fas fa-minus"></i></button></td>      <!--Subtração-->
+               </tr>
             
-            <div class="btns">
-               <button class="button" onclick="AddCaracter(3)">3</button>
-               <button class="button" onclick="AddCaracter(2)">2</button>
-               <button class="button" onclick="AddCaracter(1)">1</button>
-               <button class="button green" onclick="AddCaracter(' + ')" onclick="somar()"><i class="fas fa-plus"></i></button>
-            </div>
-
-            <div class="btns">
-               <button class="button"> +/- </button>
-               <button class="button" onclick="AddCaracter(0)">0</button>
-               <button class="button">.</button>
-               <button class="button green" onclick="Result()"><i class="fas fa-equals"></i></button>
-            </div>
+               <tr>
+                  <td><button class="button" onclick="insert('3')">3</button></td>
+                  <td><button class="button" onclick="insert('2')">2</button></td>
+                  <td><button class="button" onclick="insert('1')">1</button></td>
+                  <td><button class="button green" onclick="insert('+')"><i class="fas fa-plus"></i></button></td>    <!--Soma-->
+               </tr>
+            
+               <tr>
+                  <td><button class="button"> +/- </button></td>
+                  <td><button class="button" onclick="insert('0')">0</button></td>
+                  <td><button class="button" onclick="insert('.')">.</button></td>
+                  <td><button class="button equals" onclick="calcular()" ><i class="fas fa-equals"></i></button></td>      <!--igualdade-->
+               </tr>
+            </table>
          </div>
       </div>
 
@@ -68,6 +70,6 @@
 
    </div>
 
-   <script src="script.js"></script>
+   <script src="./javascript/script.js"></script>
 </body>
 </html>
