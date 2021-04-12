@@ -28,7 +28,7 @@ function back() {
    
 }
 
-// calcular - calcula
+// calcular - calcula o resultado das operações em questão
 
 function calcular() {
 
