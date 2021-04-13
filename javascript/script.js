@@ -1,21 +1,20 @@
-const MAX_VISOR_CHAR = 21;
+// const MAX_VISOR_CHAR = 21;
 
 function insert(num) {
    document.querySelector("#displayValue").removeAttribute("hidden");
-   if (document.querySelector("#displayValue").innerHTML.length < MAX_VISOR_CHAR) {
-      if (document.querySelector("#displayValue").innerHTML == 0) {
-            document.querySelector("#displayValue").innerHTML = "";
-         }
-      document.querySelector('#displayValue').innerHTML += num;
+   // if (document.querySelector("#displayValue").value.length < MAX_VISOR_CHAR) {}
+   if (document.querySelector("#displayValue").value == 0) {
+         document.querySelector("#displayValue").value = "";
       }
+   document.querySelector('#displayValue').value += num;
       
 }
 
 // Clear - Limpa o display
 function clean() {
 
-   if (document.querySelector("#displayValue").innerHTML != 0) {
-      document.querySelector("#displayValue").innerHTML = 0;
+   if (document.querySelector("#displayValue").value != 0) {
+      document.querySelector("#displayValue").value = 0;
    }
 
 }
@@ -23,8 +22,8 @@ function clean() {
 // back - deleta o ultimo caracater inserido
 
 function back() {
-   var resultado = document.querySelector('#displayValue').innerHTML;
-   document.querySelector('#displayValue').innerHTML = resultado.substring(0, resultado.length -1);
+   var resultado = document.querySelector('#displayValue').value;
+   document.querySelector('#displayValue').value = resultado.substring(0, resultado.length -1);
    
 }
 
@@ -32,8 +31,8 @@ function back() {
 
 function calcular() {
 
-   var resultado = document.querySelector('#displayValue').innerHTML;
+   var resultado = document.querySelector('#displayValue').value;
    if(resultado) {
-      document.querySelector('#displayValue').innerHTML = eval(resultado);
+      document.querySelector('#displayValue').value = eval(resultado);
    }
 }
