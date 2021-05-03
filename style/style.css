@@ -5,10 +5,10 @@
    color: #BBB;
 }
 
-/* @font-face {
+@font-face {
    font-family: "calculadora";
    src: url(../assets/Calculator.ttf);
-} */
+}
 
 html, body {
    width: 100%;

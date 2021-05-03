@@ -10,6 +10,7 @@ function insert(num) {
          num = "*(";
       }
    }
+   
    input.value += num;
 
    inputArrayValue.push(input.value.substring(input.value.length -1));
@@ -21,18 +22,25 @@ function insert(num) {
    if(intermediateValue.indexOf('÷')){
       finalValue = intermediateValue.replace('÷', '/');
    }
-   if(intermediateValue.indexOf('×')){
+   if (intermediateValue.indexOf('×')){
       finalValue = intermediateValue.replace('×', '*');
    }
-}
 
+   console.log(intermediateValue)
+   console.log(inputArrayValue);
+}
 
 // Clear - Limpa o display
 function clean() {
- 
+
+   inputArrayValue.splice(0, input.value.length);
+
    if (input.value != "") {
       input.value = "";
    }
+
+   console.log(intermediateValue);
+   console.log(inputArrayValue);
 
 }
 
@@ -47,9 +55,18 @@ function back() {
 // calcular - calcula o resultado das operações em questão
 
 function calcular() {
-
    let resultado = finalValue;
    if(resultado) {
       input.value = eval(resultado);
    }
+
+   inputArrayValue.splice(0, input.value.length);
+   inputArrayValue.splice(0, resultado);
+
+   if(intermediateValue.length >= 1 && inputArrayValue.length == 0){
+      inputArrayValue.push(input.value.substring(resultado));
+   }
+
+   console.log(intermediateValue);
+   console.log(inputArrayValue);
 }
