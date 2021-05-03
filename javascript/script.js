@@ -1,7 +1,7 @@
 // const MAX_VISOR_CHAR = 21;
 let input = document.querySelector("#displayValue");
 let inputArrayValue = [];
-let intermediateValue;
+let intermediateValue, finalValue;
 
 function insert(num) {
    if(num == undefined) {
@@ -17,7 +17,15 @@ function insert(num) {
    intermediateValue = inputArrayValue.join('');
 
    inputArrayValue.splice(0, input.value.length, intermediateValue);
+
+   if(intermediateValue.indexOf('÷')){
+      finalValue = intermediateValue.replace('÷', '/');
+   }
+   if(intermediateValue.indexOf('×')){
+      finalValue = intermediateValue.replace('×', '*');
+   }
 }
+
 
 // Clear - Limpa o display
 function clean() {
@@ -40,9 +48,8 @@ function back() {
 
 function calcular() {
 
-   let resultado = intermediateValue;
+   let resultado = finalValue;
    if(resultado) {
       input.value = eval(resultado);
    }
-
 }
