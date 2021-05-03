@@ -5,16 +5,10 @@
    color: #BBB;
 }
 
-@font-face {
-   font-family: calculadora ;
+/* @font-face {
+   font-family: "calculadora";
    src: url(../assets/Calculator.ttf);
-}
-
-input:focus {
-   border: none 0;
-   box-shadow: 0 0 0 0;
-   outline: none;
-}
+} */
 
 html, body {
    width: 100%;
@@ -224,7 +218,8 @@ html, body {
 .section-buttons .btns tr td .button.green i{
    color: #12ef5f;
 }
-.section-buttons .btns tr td .button.equals{ /*Select button on =*/
+/*Select button on =*/
+.section-buttons .btns tr td .button.equals{
    background-color: #12ef5f;
 }
 
