@@ -1,6 +1,7 @@
 // const MAX_VISOR_CHAR = 21;
 let input = document.querySelector("#displayValue");
 let inputArrayValue = [];
+let intermediateValue;
 
 function insert(num) {
    if(num == undefined) {
@@ -9,19 +10,18 @@ function insert(num) {
          num = "*(";
       }
    }
-   // ? adicionar os valores do input.value a um array para modificar os caracteres....
    input.value += num;
-   
+
    inputArrayValue.push(input.value.substring(input.value.length -1));
    
-   // inputArrayValue.splice(0, inputArrayValue.join(''));
-   
-   console.log(inputArrayValue);
+   intermediateValue = inputArrayValue.join('');
+
+   inputArrayValue.splice(0, input.value.length, intermediateValue);
 }
 
 // Clear - Limpa o display
 function clean() {
-
+ 
    if (input.value != "") {
       input.value = "";
    }
@@ -39,8 +39,10 @@ function back() {
 // calcular - calcula o resultado das operações em questão
 
 function calcular() {
-   let resultado = input.value;
+
+   let resultado = intermediateValue;
    if(resultado) {
       input.value = eval(resultado);
    }
+
 }
