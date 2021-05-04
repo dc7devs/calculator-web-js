@@ -14,18 +14,15 @@ function insert(num) {
    input.value += num;
 
    inputArrayValue.push(input.value.substring(input.value.length -1));
-   
    intermediateValue = inputArrayValue.join('');
-
    inputArrayValue.splice(0, input.value.length, intermediateValue);
-
-   if(intermediateValue.indexOf('÷')){
+   
+   if(intermediateValue.includes('÷')){
       finalValue = intermediateValue.replace('÷', '/');
    }
-   if (intermediateValue.indexOf('×')){
+   if (intermediateValue.includes('×')){
       finalValue = intermediateValue.replace('×', '*');
    }
-
    console.log(intermediateValue)
    console.log(inputArrayValue);
 }
@@ -70,3 +67,4 @@ function calcular() {
    console.log(intermediateValue);
    console.log(inputArrayValue);
 }
+// Problemas no + e no -
