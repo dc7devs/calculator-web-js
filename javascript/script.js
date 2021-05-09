@@ -1,7 +1,7 @@
 // const MAX_VISOR_CHAR = 21;
 let input = document.querySelector("#displayValue");
 let inputArrayValue = [];
-let intermediateValue, finalValue;
+let intermediateValue;
 
 function insert(num) {
    if(num == undefined) {
@@ -17,7 +17,6 @@ function insert(num) {
    intermediateValue = inputArrayValue.join('');
    inputArrayValue.splice(0, input.value.length, intermediateValue);
 
-   console.log(intermediateValue)
    console.log(inputArrayValue);
 }
 
@@ -29,10 +28,6 @@ function clean() {
    if (input.value != "") {
       input.value = "";
    }
-
-   console.log(intermediateValue);
-   console.log(inputArrayValue);
-
 }
 
 // back - deleta o ultimo caracater inserido
@@ -40,33 +35,40 @@ function clean() {
 function back() {
    let resultado = input.value;
    input.value = resultado.substring(0, resultado.length -1);
-   
+
+   inputArrayValue.splice(0, 1, inputArrayValue[0].substring(0, resultado.length -1));
+
+   console.log(inputArrayValue);
+
 }
 
 // calcular - calcula o resultado das operações em questão
 
 function calcular() {
+   let finalValue;
    if(intermediateValue.includes('÷')){
       finalValue = intermediateValue.replace('÷', '/');
-   }
-   else if (intermediateValue.includes('×')){
+
+   } else if (intermediateValue.includes('×')){
       finalValue = intermediateValue.replace('×', '*');
+
    } else {
       finalValue = intermediateValue;
    }
    
-   let resultado = finalValue;
-   if(resultado) {
-      input.value = eval(resultado);
+   // let resultado = finalValue;
+   if(finalValue) {
+      input.value = eval(finalValue);
    }
 
    inputArrayValue.splice(0, input.value.length);
-   inputArrayValue.splice(0, resultado);
+   inputArrayValue.splice(0, finalValue);
 
    if(intermediateValue.length >= 1 && inputArrayValue.length == 0){
-      inputArrayValue.push(input.value.substring(resultado));
+      inputArrayValue.push(input.value.substring(finalValue));
    }
 
-   console.log(intermediateValue);
+   console.log(finalValue);
+
    console.log(inputArrayValue);
 }
