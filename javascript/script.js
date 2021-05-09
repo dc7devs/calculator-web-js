@@ -16,13 +16,7 @@ function insert(num) {
    inputArrayValue.push(input.value.substring(input.value.length -1));
    intermediateValue = inputArrayValue.join('');
    inputArrayValue.splice(0, input.value.length, intermediateValue);
-   
-   if(intermediateValue.includes('÷')){
-      finalValue = intermediateValue.replace('÷', '/');
-   }
-   if (intermediateValue.includes('×')){
-      finalValue = intermediateValue.replace('×', '*');
-   }
+
    console.log(intermediateValue)
    console.log(inputArrayValue);
 }
@@ -52,6 +46,15 @@ function back() {
 // calcular - calcula o resultado das operações em questão
 
 function calcular() {
+   if(intermediateValue.includes('÷')){
+      finalValue = intermediateValue.replace('÷', '/');
+   }
+   else if (intermediateValue.includes('×')){
+      finalValue = intermediateValue.replace('×', '*');
+   } else {
+      finalValue = intermediateValue;
+   }
+   
    let resultado = finalValue;
    if(resultado) {
       input.value = eval(resultado);
@@ -67,4 +70,3 @@ function calcular() {
    console.log(intermediateValue);
    console.log(inputArrayValue);
 }
-// Problemas no + e no -
