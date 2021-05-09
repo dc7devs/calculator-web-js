@@ -1,16 +1,23 @@
-// const MAX_VISOR_CHAR = 21;
 let input = document.querySelector("#displayValue");
 let inputArrayValue = [];
 let intermediateValue;
 
 function insert(num) {
-   if(num == undefined) {
-      num = "(";
-      if(input.value.substring(input.value.length -1) != '') {
-         num = "*(";
-      }
+   if(input.value.substring(input.value.length -1) == '÷' && num == '÷' || input.value.substring(input.value.length -1) == '×' && num == '×') {
+      alert("Operation invalid");
+      num = this.setAttribute("disabled"); // Funciona porém retorna - TypeError: num.setAttribute is not a function
+
+   } else if (input.value.substring(input.value.length -1) == '÷' && num == '×' || input.value.substring(input.value.length -1) == '×' && num == '÷') {
+      alert("Operation invalid");
+      num = this.setAttribute("disabled"); //Funciona porém retorna - TypeError: num.setAttribute is not a function
+
+   } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
+      input.value += '0'; // Debugger: Esste valor não e atribuido ao Array..
+
+   } else if (input.value.substring(input.value.length -1) == '.' && num == '.') {
+      this.setAttribute('disabled'); //Funciona porém retorna - TypeError: num.setAttribute is not a function
    }
-   
+
    input.value += num;
 
    inputArrayValue.push(input.value.substring(input.value.length -1));
@@ -18,6 +25,7 @@ function insert(num) {
    inputArrayValue.splice(0, input.value.length, intermediateValue);
 
    console.log(inputArrayValue);
+
 }
 
 // Clear - Limpa o display
@@ -55,10 +63,13 @@ function calcular() {
    } else {
       finalValue = intermediateValue;
    }
-   
-   // let resultado = finalValue;
+
    if(finalValue) {
       input.value = eval(finalValue);
+
+   } else {
+      input.value = "Invalid";
+      // clean()
    }
 
    inputArrayValue.splice(0, input.value.length);
@@ -68,7 +79,15 @@ function calcular() {
       inputArrayValue.push(input.value.substring(finalValue));
    }
 
-   console.log(finalValue);
-
    console.log(inputArrayValue);
+   console.log(finalValue);
 }
+
+// ## IDEIAS
+
+/**
+ * [] Previzualização do resultado
+ * [] Maneira de add valor ao inputArrayValue pegando os valores do input.value independete de como eles estão sendo adicionados ao input.value
+ * [] Alertas de quando o retorno da operação for invalida
+ * [] ...
+ */
