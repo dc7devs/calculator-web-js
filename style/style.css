@@ -14,9 +14,11 @@ html, body {
    align-items: center;
    justify-content: center;
    align-items: center;
+   position: relative;
 }
 
 .container {
+   position: absolute;
    height: 650px;
    width: 370px;
 
@@ -29,7 +31,9 @@ html, body {
    align-items: center;
    justify-content: center;
 
-   box-shadow: 0 0 50px 5px rgb(255, 255, 255, .3);
+   z-index: 1;
+
+   box-shadow: -5px 5px 20px rgb(0, 0, 0, .7);
 }
 
 .hardw-cl.sup {

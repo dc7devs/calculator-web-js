@@ -83,11 +83,16 @@ function calcular() {
    console.log(finalValue);
 }
 
+// Função que mostra uma notificação quando a operação for invalida
+function showNote() {
+   document.querySelector("#alert").removeAttribute("hidden")
+}
+
 // ## IDEIAS
 
 /**
- * [] Previzualização do resultado
  * [] Maneira de add valor ao inputArrayValue pegando os valores do input.value independete de como eles estão sendo adicionados ao input.value
+ * [] Previzualização do resultado
  * [] Alertas de quando o retorno da operação for invalida
- * [] ...
+ * [] Interação da aplicação utilizando o teclado atraves dos keyCodes
  */
