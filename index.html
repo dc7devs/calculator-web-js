@@ -7,6 +7,7 @@
    <title>Calculator</title>
 
    <link rel="stylesheet" href="./style/style.css">
+   <link rel="stylesheet" href="./style/alertErrorOperation.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 <body>
@@ -28,38 +29,38 @@
          <div class="section-buttons">
             <table class="btns">
                <tr>
-                  <td><button class="button red" onclick="clean()"><i class="fab fa-codiepie"></i></button></td> <!-- Clear -->
-                  <td><button class="button green" onclick="insert('(')" style="font-weight: bold">(</button></td>
-                  <td><button class="button green" onclick="insert(')')" style="font-weight: bold">)</button></td>
-                  <td><button class="button green operator" onclick="insert('÷')"><i class="fas fa-divide"></i></button></td> <!--divisão -->
+                  <td><button class="botao red" onclick="clean()"><i class="fab fa-codiepie"></i></button></td> <!-- Clear -->
+                  <td><button class="botao green" onclick="insert('(')" style="font-weight: bold">(</button></td>
+                  <td><button class="botao green" onclick="insert(')')" style="font-weight: bold">)</button></td>
+                  <td><button class="botao green operator" onclick="insert('÷')"><i class="fas fa-divide"></i></button></td> <!--divisão -->
                </tr>
             
                <tr>
-                  <td><button class="button" onclick="insert('9')">9</button></td>
-                  <td><button class="button" onclick="insert('8')">8</button></td>
-                  <td><button class="button" onclick="insert('7')">7</button></td>
-                  <td><button class="button green operator" onclick="insert('×')"><i class="fas fa-times"></i></button></td> <!--Multipliacação-->
+                  <td><button class="botao" onclick="insert('9')">9</button></td>
+                  <td><button class="botao" onclick="insert('8')">8</button></td>
+                  <td><button class="botao" onclick="insert('7')">7</button></td>
+                  <td><button class="botao green operator" onclick="insert('×')"><i class="fas fa-times"></i></button></td> <!--Multipliacação-->
                </tr>
             
                <tr>
-                  <td><button class="button" onclick="insert('6')">6</button></td>
-                  <td><button class="button" onclick="insert('5')">5</button></td>
-                  <td><button class="button" onclick="insert('4')">4</button></td>
-                  <td><button class="button green operator" onclick="insert('-')"><i class="fas fa-minus"></i></button></td> <!--Subtração-->
+                  <td><button class="botao" onclick="insert('6')">6</button></td>
+                  <td><button class="botao" onclick="insert('5')">5</button></td>
+                  <td><button class="botao" onclick="insert('4')">4</button></td>
+                  <td><button class="botao green operator" onclick="insert('-')"><i class="fas fa-minus"></i></button></td> <!--Subtração-->
                </tr>
             
                <tr>
-                  <td><button class="button" onclick="insert('3')">3</button></td>
-                  <td><button class="button" onclick="insert('2')">2</button></td>
-                  <td><button class="button" onclick="insert('1')">1</button></td>
-                  <td><button class="button green operator" onclick="insert('+')"><i class="fas fa-plus"></i></button></td> <!--Soma-->
+                  <td><button class="botao" onclick="insert('3')">3</button></td>
+                  <td><button class="botao" onclick="insert('2')">2</button></td>
+                  <td><button class="botao" onclick="insert('1')">1</button></td>
+                  <td><button class="botao green operator" onclick="insert('+')"><i class="fas fa-plus"></i></button></td> <!--Soma-->
                </tr>
             
                <tr>
-                  <td><button class="button" onclick="insert('.')">.</button></td>
-                  <td><button class="button" onclick="insert('0')">0</button></td>
-                  <td><button class="button green" disabled></button></td>    <!-- percentage --> <!-- <i class="fas fa-percentage"></i> -->
-                  <td><button class="button equals" onclick="calcular()" ><i class="fas fa-equals"></i></button></td> <!--igualdade-->
+                  <td><button class="botao" onclick="insert('.')">.</button></td>
+                  <td><button class="botao" onclick="insert('0')">0</button></td>
+                  <td><button class="botao green" disabled></button></td>    <!-- percentage --> <!-- <i class="fas fa-percentage"></i> -->
+                  <td><button class="botao equals" onclick="calcular()" ><i class="fas fa-equals"></i></button></td> <!--igualdade-->
                </tr>
             </table>
          </div>
@@ -70,6 +71,7 @@
       </div>
 
    </div>
+   <span id="alert" hidden>Operação Invalida</span>
 
    <script src="./javascript/script.js"></script>
 </body>

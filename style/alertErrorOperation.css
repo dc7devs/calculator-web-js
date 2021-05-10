@@ -1,0 +1,21 @@
+#alert {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+
+    min-width: 200px;
+    max-width: 350px;
+    min-height: 50px;
+    height: auto;
+
+    border:solid 1px #f52a2a;
+    /* border:solid 1px #a5f52a; */
+    border-radius: 15px;
+
+    padding: 10px;
+    line-height: 25px;
+    text-align: center;
+    background-color: #2a2a2f;
+
+    transition: 2s;
+}

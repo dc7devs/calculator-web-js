@@ -1,21 +1,23 @@
 let input = document.querySelector("#displayValue");
+let alert = document.querySelector("#alert");
 let inputArrayValue = [];
 let intermediateValue;
 
 function insert(num) {
    if(input.value.substring(input.value.length -1) == '÷' && num == '÷' || input.value.substring(input.value.length -1) == '×' && num == '×') {
-      alert("Operation invalid");
-      num = this.setAttribute("disabled"); // Funciona porém retorna - TypeError: num.setAttribute is not a function
+      showNote(`Operação podera vir a ser invalida por conter mais de um operador`);
+      // Funciona porém retorna - TypeError: num.setAttribute is not a function
 
    } else if (input.value.substring(input.value.length -1) == '÷' && num == '×' || input.value.substring(input.value.length -1) == '×' && num == '÷') {
       alert("Operation invalid");
-      num = this.setAttribute("disabled"); //Funciona porém retorna - TypeError: num.setAttribute is not a function
+      // Funciona porém retorna - TypeError: num.setAttribute is not a function
 
    } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
-      input.value += '0'; // Debugger: Esste valor não e atribuido ao Array..
+      input.value += '0'; // Debugger: Este valor não e atributo ao Array..
 
    } else if (input.value.substring(input.value.length -1) == '.' && num == '.') {
-      this.setAttribute('disabled'); //Funciona porém retorna - TypeError: num.setAttribute is not a function
+      // Funciona porém retorna - TypeError: num.setAttribute is not a function
+   } else {
    }
 
    input.value += num;
@@ -83,11 +85,17 @@ function calcular() {
    console.log(finalValue);
 }
 
+// Função que mostra uma notificação quando a operação for invalida
+function showNote(message) {
+   alert.removeAttribute("hidden");
+   alert.innerHTML = message;
+}
+
 // ## IDEIAS
 
 /**
- * [] Previzualização do resultado
  * [] Maneira de add valor ao inputArrayValue pegando os valores do input.value independete de como eles estão sendo adicionados ao input.value
+ * [] Previzualização do resultado
  * [] Alertas de quando o retorno da operação for invalida
- * [] ...
+ * [] Interação da aplicação utilizando o teclado atraves dos keyCodes
  */
