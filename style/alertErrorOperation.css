@@ -15,7 +15,6 @@
     line-height: 25px;
     text-align: center;
     background-color: #2a2a2f;
-<<<<<<< HEAD
     color: #f52a2a;
 
     transition: 2s ease;
@@ -37,11 +36,7 @@
     80%{transform: translateX(430px)}
     100%{transform: translateX(370px)}
 }
-=======
->>>>>>> b8b1d402281792635a7a466198e5614b278abb0e
 
-    transition: 2s;
-}
 /* Mostrar a notificação */
 span.showAlert {
     animation-duration: 1s;
@@ -50,10 +45,5 @@ span.showAlert {
     position: absolute;
     transition: ease-in-out;
 
-<<<<<<< HEAD
     opacity: .9;
-
 }
-=======
-} */
->>>>>>> b8b1d402281792635a7a466198e5614b278abb0e
