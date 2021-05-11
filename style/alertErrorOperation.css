@@ -1,21 +1,50 @@
 #alert {
     position: absolute;
-    top: 30px;
-    right: 20px;
-
-    min-width: 200px;
-    max-width: 350px;
-    min-height: 50px;
+    top: 36px;
+    left: 20px;
+    
+    max-width: 370px;
+    
     height: auto;
 
-    border:solid 1px #f52a2a;
-    /* border:solid 1px #a5f52a; */
+    border-top: solid 1px #a5f52a;
+    border-bottom: solid 1px #a5f52a;
     border-radius: 15px;
 
     padding: 10px;
     line-height: 25px;
     text-align: center;
     background-color: #2a2a2f;
+    color: #f52a2a;
 
-    transition: 2s;
+    transition: 2s ease;
+}
+.showAlert:before {
+    content: "";
+    width: 0;
+    height: 0;
+
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #2a2a2f;
+    position: absolute;
+    top: 10px;
+    left: -15px;
+}
+@keyframes animacao {
+    0% {}
+    80%{transform: translateX(430px)}
+    100%{transform: translateX(370px)}
+}
+
+/* Mostrar a notificação */
+span.showAlert {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    /* animation-delay: 5; */
+    position: absolute;
+    transition: ease-in-out;
+
+    opacity: .9;
+
 }

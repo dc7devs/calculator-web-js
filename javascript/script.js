@@ -1,23 +1,53 @@
 let input = document.querySelector("#displayValue");
 let alert = document.querySelector("#alert");
+
 let inputArrayValue = [];
 let intermediateValue;
 
+showNote(`Opa, bora calcular!`);
+
+setTimeout(() => {
+      alert.classList.remove("showAlert");
+      alert.removeAttribute("style", "animationName: animacao");
+      alert.innerHTML = "";
+}, 3000)
+
 function insert(num) {
-   if(input.value.substring(input.value.length -1) == '÷' && num == '÷' || input.value.substring(input.value.length -1) == '×' && num == '×') {
-      showNote(`Operação podera vir a ser invalida por conter mais de um operador`);
-      // Funciona porém retorna - TypeError: num.setAttribute is not a function
+   if(input.value.substring(input.value.length -1) == '÷' && num == '÷') {
+      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 ÷ 2</strong>`);
+      setTimeout(() => {
+         alert.classList.remove('showAlert');
+         alert.removeAttribute("style", "animationName: animacao");
+         alert.innerHTML = "";
+      },10000);
+
+   } else if (input.value.substring(input.value.length -1) == '×' && num == '×') {
+      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>2 × 10</strong>`);
+      setTimeout(() => {
+         alert.classList.remove('showAlert');
+         alert.removeAttribute("style", "animationName: animacao");
+         alert.innerHTML = "";
+      },10000);
+
+   } else if (input.value.substring(input.value.length -1) == '+' && num == '+' ) {
+      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 + 10</strong>`);
+      setTimeout(() => {
+         alert.classList.remove('showAlert');
+         alert.removeAttribute("style", "animationName: animacao");
+         alert.innerHTML = "";
+      },10000);
 
    } else if (input.value.substring(input.value.length -1) == '÷' && num == '×' || input.value.substring(input.value.length -1) == '×' && num == '÷') {
-      alert("Operation invalid");
-      // Funciona porém retorna - TypeError: num.setAttribute is not a function
+      showNote(`Operação podera vir a ser invalida por conter operadores juntos um após outro. Tente Ex: <strong>2 × 20</strong> ou <strong>10 ÷ 2</strong>. Erro por <b>÷×<b> estarem juntos`);
+      setTimeout(() => {
+         alert.classList.remove('showAlert');
+         alert.removeAttribute("style", "animationName: animacao");
+         alert.innerHTML = "";
+      },10000);
 
    } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
       input.value += '0'; // Debugger: Este valor não e atributo ao Array..
 
-   } else if (input.value.substring(input.value.length -1) == '.' && num == '.') {
-      // Funciona porém retorna - TypeError: num.setAttribute is not a function
-   } else {
    }
 
    input.value += num;
@@ -32,9 +62,7 @@ function insert(num) {
 
 // Clear - Limpa o display
 function clean() {
-
    inputArrayValue.splice(0, input.value.length);
-
    if (input.value != "") {
       input.value = "";
    }
@@ -71,7 +99,6 @@ function calcular() {
 
    } else {
       input.value = "Invalid";
-      // clean()
    }
 
    inputArrayValue.splice(0, input.value.length);
@@ -82,20 +109,22 @@ function calcular() {
    }
 
    console.log(inputArrayValue);
-   console.log(finalValue);
+   // console.log(finalValue);
 }
 
 // Função que mostra uma notificação quando a operação for invalida
 function showNote(message) {
-   alert.removeAttribute("hidden");
+   if(alert.classList.contains('showAlert') == false){
+      alert.classList.add('showAlert');
+   }
+
+   alert.style.animationName = "animacao";
    alert.innerHTML = message;
 }
-
 // ## IDEIAS
 
 /**
- * [] Maneira de add valor ao inputArrayValue pegando os valores do input.value independete de como eles estão sendo adicionados ao input.value
  * [] Previzualização do resultado
- * [] Alertas de quando o retorno da operação for invalida
  * [] Interação da aplicação utilizando o teclado atraves dos keyCodes
+ * [] Debugger parentase 
  */
