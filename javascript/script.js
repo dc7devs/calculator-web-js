@@ -90,7 +90,6 @@ function showNote(message) {
    alert.removeAttribute("hidden");
    alert.innerHTML = message;
 }
-
 // ## IDEIAS
 
 /**
