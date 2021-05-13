@@ -12,8 +12,25 @@ setTimeout(() => {
       alert.innerHTML = "";
 }, 3000)
 
-function insert(num) {
-   if(input.value.substring(input.value.length -1) == '÷' && num == '÷') {
+function insert(num, elemento){
+   // Condicionamento para a inserção
+
+   if ((input.value.length == 0) && (num == '÷' || num == '×' || num == '+' || num == '-')) {
+      // num = ""; !!!!!!!!!!!!!!!!!!!!!!
+      if (elemento.contains(elemento.getAttribute("disabled")) == false) {
+         elemento.setAttribute("disabled", "");
+      } else  {
+         elemento.removeAttribute("disabled");
+      }
+   } else if ((input.value.length == 0) && (num == '÷' || num == '×' || num == '+' || num == '-')) {
+      if (elemento.contains(elemento.getAttribute("disabled")) == true) {
+         elemento.removeAttribute("disabled");
+      }
+   } else if (num != "÷" || num != "×" || num != "+" || num != "-") {
+      console.log("Ok");
+   }
+
+  if(input.value.substring(input.value.length -1) == '÷' && num == '÷') {
       showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 ÷ 2</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
@@ -41,13 +58,12 @@ function insert(num) {
       showNote(`Operação podera vir a ser invalida por conter operadores juntos um após outro. Tente Ex: <strong>2 × 20</strong> ou <strong>10 ÷ 2</strong>. Erro por <b>÷×<b> estarem juntos`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
-         alert.removeAttribute("style", "animationName: animacao");
+         alert.removeAttribute('style', 'animationName: animacao');
          alert.innerHTML = "";
       },10000);
 
    } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
-      input.value += '0'; // Debugger: Este valor não e atributo ao Array..
-
+      input.value += '0'; // Debugger: Este valor não e atributo ao Array...
    }
 
    input.value += num;
@@ -57,15 +73,16 @@ function insert(num) {
    inputArrayValue.splice(0, input.value.length, intermediateValue);
 
    console.log(inputArrayValue);
-
 }
 
 // Clear - Limpa o display
 function clean() {
+   intermediateValue = undefined;
    inputArrayValue.splice(0, input.value.length);
    if (input.value != "") {
       input.value = "";
    }
+   console.log(inputArrayValue);
 }
 
 // back - deleta o ultimo caracater inserido
@@ -77,14 +94,16 @@ function back() {
    inputArrayValue.splice(0, 1, inputArrayValue[0].substring(0, resultado.length -1));
 
    console.log(inputArrayValue);
-
 }
 
 // calcular - calcula o resultado das operações em questão
 
 function calcular() {
    let finalValue;
-   if(intermediateValue.includes('÷')){
+   if (intermediateValue == undefined) {
+      showNote(`Error!`);
+
+   } else if(intermediateValue.includes('÷')){
       finalValue = intermediateValue.replace('÷', '/');
 
    } else if (intermediateValue.includes('×')){
@@ -96,9 +115,6 @@ function calcular() {
 
    if(finalValue) {
       input.value = eval(finalValue);
-
-   } else {
-      input.value = "Invalid";
    }
 
    inputArrayValue.splice(0, input.value.length);
@@ -109,7 +125,6 @@ function calcular() {
    }
 
    console.log(inputArrayValue);
-   // console.log(finalValue);
 }
 
 // Função que mostra uma notificação quando a operação for invalida
