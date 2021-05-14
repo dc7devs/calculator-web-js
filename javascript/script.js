@@ -14,20 +14,17 @@ setTimeout(() => {
 
 function insert(num, elemento){
    // Condicionamento para a inserção
+   operator = ['÷', '×', '+', '-']
 
-   if ((input.value.length == 0) && (num == '÷' || num == '×' || num == '+' || num == '-')) {
-      // num = ""; !!!!!!!!!!!!!!!!!!!!!!
+   if (input.value.length == 0 && operator.includes(num)) {
+      num = '';
       if (elemento.contains(elemento.getAttribute("disabled")) == false) {
-         elemento.setAttribute("disabled", "");
-      } else  {
-         elemento.removeAttribute("disabled");
+         elemento.toggleAttribute("disabled", "");
       }
-   } else if ((input.value.length == 0) && (num == '÷' || num == '×' || num == '+' || num == '-')) {
+   } else if (input.value.length == 0 && operator.includes(num)) {
       if (elemento.contains(elemento.getAttribute("disabled")) == true) {
          elemento.removeAttribute("disabled");
       }
-   } else if (num != "÷" || num != "×" || num != "+" || num != "-") {
-      console.log("Ok");
    }
 
   if(input.value.substring(input.value.length -1) == '÷' && num == '÷') {
@@ -68,10 +65,14 @@ function insert(num, elemento){
 
    input.value += num;
 
-   inputArrayValue.push(input.value.substring(input.value.length -1));
-   intermediateValue = inputArrayValue.join('');
-   inputArrayValue.splice(0, input.value.length, intermediateValue);
-
+   if(input.value.substring(input.value.length -1) == '') {
+      return 0;
+   } else {
+      inputArrayValue.push(input.value.substring(input.value.length -1))
+      intermediateValue = inputArrayValue.join('');
+      inputArrayValue.splice(0, input.value.length, intermediateValue);
+   }
+   
    console.log(inputArrayValue);
 }
 
@@ -127,7 +128,7 @@ function calcular() {
    console.log(inputArrayValue);
 }
 
-// Função que mostra uma notificação quando a operação for invalida
+// Função mostra uma notificação quando a operação for invalida
 function showNote(message) {
    if(alert.classList.contains('showAlert') == false){
       alert.classList.add('showAlert');
