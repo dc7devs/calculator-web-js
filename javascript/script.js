@@ -16,18 +16,13 @@ function insert(num, elemento){
    // Condicionamento para a inserção
    operator = ['÷', '×', '+', '-']
 
-   if (input.value.length == 0 && operator.includes(num)) {
+   if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
       num = '';
       if (elemento.contains(elemento.getAttribute("disabled")) == false) {
          elemento.toggleAttribute("disabled", "");
       }
-   } else if (input.value.length == 0 && operator.includes(num)) {
-      if (elemento.contains(elemento.getAttribute("disabled")) == true) {
-         elemento.removeAttribute("disabled");
-      }
-   }
-
-  if(input.value.substring(input.value.length -1) == '÷' && num == '÷') {
+      
+   } else if(input.value.substring(input.value.length -1) == '÷' && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 ÷ 2</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
@@ -35,7 +30,7 @@ function insert(num, elemento){
          alert.innerHTML = "";
       },10000);
 
-   } else if (input.value.substring(input.value.length -1) == '×' && num == '×') {
+   } else if (input.value.substring(input.value.length -1) == '×' && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>2 × 10</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
@@ -43,7 +38,7 @@ function insert(num, elemento){
          alert.innerHTML = "";
       },10000);
 
-   } else if (input.value.substring(input.value.length -1) == '+' && num == '+' ) {
+   } else if (input.value.substring(input.value.length -1) == '+' && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 + 10</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
@@ -51,7 +46,7 @@ function insert(num, elemento){
          alert.innerHTML = "";
       },10000);
 
-   } else if (input.value.substring(input.value.length -1) == '÷' && num == '×' || input.value.substring(input.value.length -1) == '×' && num == '÷') {
+   } else if (input.value.substring(input.value.length -1) == '÷' && operator.includes(num) || input.value.substring(input.value.length -1) == '×' && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter operadores juntos um após outro. Tente Ex: <strong>2 × 20</strong> ou <strong>10 ÷ 2</strong>. Erro por <b>÷×<b> estarem juntos`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
@@ -60,7 +55,7 @@ function insert(num, elemento){
       },10000);
 
    } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
-      input.value += '0'; // Debugger: Este valor não e atributo ao Array...
+      input.value += '0';
    }
 
    input.value += num;
@@ -137,10 +132,8 @@ function showNote(message) {
    alert.style.animationName = "animacao";
    alert.innerHTML = message;
 }
-// ## IDEIAS
 
-/**
- * [] Previzualização do resultado
+/**  ## Implementations
+ * [] Previzualização do resultado no <p class="clac-preview">
  * [] Interação da aplicação utilizando o teclado atraves dos keyCodes
- * [] Debugger parentase 
  */
