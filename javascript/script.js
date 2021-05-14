@@ -16,15 +16,35 @@ function insert(num, elemento){
    // Condicionamento para a inserção
    operator = ['÷', '×', '+', '-']
 
+   // string.slice() pega valores da direito pra esquerda se vc usar valores negativos. 
+   // string.slice(string.length - 4) é a mesma coisa que string.slice(-4) e fica bem mais curto.
+   // const ultimoValor = input.value.substring(input.value.length -1);
+   const ultimoValor = input.value.slice(-1);
    if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
       num = '';
-      console.log(elemento.getAttribute("disabled"), elemento)
-      if (elemento.contains(elemento.getAttribute("disabled")) == false) {
+      console.log(elemento);
+      console.log(elemento.getAttribute("disabled"));
+      if (!elemento.hasAttribute('disabled')) {
          console.log('hello')
-         elemento.toggleAttribute("disabled", "");
+         elemento.toggleAttribute("disabled");
       }
       
-   } else if(input.value.substring(input.value.length -1) == '÷' && operator.includes(num)) {
+   } 
+   // dessa forma vc consegue usar todos os operadores sem fazer 4 ifs enormes e identicos e vc pode ignorar os outros de baixo
+   else if(operator.includes(ultimoValor) && operator.includes(num)) {
+      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 ${ultimoValor} 2</strong>`);
+      setTimeout(() => {
+         alert.classList.remove('showAlert');
+         alert.removeAttribute("style", "animationName: animacao");
+         alert.innerHTML = "";
+      },10000);
+   }
+
+   /* 
+   
+   TODO ESSE CÓDIGO PODE SER APAGADO
+
+   else if(input.value.substring(input.value.length -1) == '÷' && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 ÷ 2</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
@@ -56,16 +76,19 @@ function insert(num, elemento){
          alert.innerHTML = "";
       },10000);
 
-   } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
+   }*/ 
+   
+   //Tambem perceba que eu reutilizei varias vezes a constante "ultimoValor" sem precisar reescrever input.value.subst...
+   else if (ultimoValor == '' && num == '.') {
       input.value += '0';
    }
 
    input.value += num;
 
-   if(input.value.substring(input.value.length -1) == '') {
+   if(ultimoValor == '') {
       return 0;
    } else {
-      inputArrayValue.push(input.value.substring(input.value.length -1))
+      inputArrayValue.push(ultimoValor)
       intermediateValue = inputArrayValue.join('');
       inputArrayValue.splice(0, input.value.length, intermediateValue);
    }
