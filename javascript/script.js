@@ -18,7 +18,9 @@ function insert(num, elemento){
 
    if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
       num = '';
+      console.log(elemento.getAttribute("disabled"), elemento)
       if (elemento.contains(elemento.getAttribute("disabled")) == false) {
+         console.log('hello')
          elemento.toggleAttribute("disabled", "");
       }
       
