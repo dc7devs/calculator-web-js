@@ -18,7 +18,7 @@ function insert(num, elemento){
 
    if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
       num = '';
-      if (elemento.contains(elemento.getAttribute("disabled")) == false) {
+      if (!elemento.hasAttribute('disabled')) {
          elemento.toggleAttribute("disabled", "");
       }
       
