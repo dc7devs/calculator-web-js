@@ -1,5 +1,5 @@
-let input = document.querySelector("#displayValue");
-let alert = document.querySelector("#alert");
+let input = document.querySelector("#displayValue")
+let alert = document.querySelector("#alert")
 
 let inputArrayValue = [];
 let intermediateValue;
@@ -19,18 +19,17 @@ function insert(num){
 
    if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
       return 0;
-   }
-   else if (operator.includes(lastValue) && operator.includes(num)) {
+
+   } else if (operator.includes(lastValue) && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter operadores binário ou mais de um operadores diferente seguidos um após o outro. <br>Tente Ex: <strong>${lastValue}</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
          alert.removeAttribute("style", "animationName: animacao");
          alert.innerHTML = "";
       },10000);
-   }
-   
-   else if (lastValue == '' && num == '.') {
-      input.value += '0';
+
+   } else if (lastValue == '' && num == '.') {
+      input.value += "0";
    }
 
    input.value += num;
@@ -53,7 +52,6 @@ function clean() {
 }
 
 // back - deleta o ultimo caracater inserido
-
 function back() {
    let resultado = input.value;
    input.value = resultado.substring(0, resultado.length -1);
@@ -64,13 +62,19 @@ function back() {
 }
 
 // calculate - calcula o resultado das operações em questão
-
 function calculate() {
    let finalValue;
    if (intermediateValue == undefined) {
-      showNote(`Error!`);
+      showNote(`<strong style="color: #a2f52a">Insira uma operação valida!!</strong>`);
+      setTimeout(() => {
+         alert.classList.remove('showAlert');
+         alert.removeAttribute("style", "animationName: animacao");
+         alert.innerHTML = "";
+      }, 3000)
+      return 0;
 
    } else if(intermediateValue.includes('÷')){
+      
       finalValue = intermediateValue.replace('÷', '/');
 
    } else if (intermediateValue.includes('×')){
@@ -93,6 +97,7 @@ function calculate() {
 
    console.log(inputArrayValue);
 }
+
 
 // Função mostra uma notificação quando a operação for invalida
 function showNote(message) {
