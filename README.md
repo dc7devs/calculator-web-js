@@ -14,7 +14,7 @@
 
 ## 💻 Sobre o projeto
 
-Discord - E uma plataforma de entreterimento voltada pricipalmente para games, onde os usuários podem conectar a um certo servidor da sua preferência e que contém pessoas com os mesmo interesses que o seu podendo conversar em chat, video chamada e Call, compartilhando iteresse comums.
+<img height="16" src="./assets/Calculator-3-icon.png"> Calculadora-web-js - basicamente uma calculadora web, contento as funcionalidade basicas de uma calculadora comum, com um diferencial no layout que apresenta uma device frame construido com CSS3.
 
 ---
 
