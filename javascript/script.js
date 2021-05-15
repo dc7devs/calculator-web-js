@@ -12,61 +12,32 @@ setTimeout(() => {
       alert.innerHTML = "";
 }, 3000)
 
-function insert(num, elemento){
+function insert(num){
    // Condicionamento para a inserção
    operator = ['÷', '×', '+', '-']
+   let lastValue = input.value.slice(-1);
 
    if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
-      num = '';
-      if (!elemento.hasAttribute('disabled')) {
-         elemento.toggleAttribute("disabled", "");
-      }
-      
-   } else if(input.value.substring(input.value.length -1) == '÷' && operator.includes(num)) {
-      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 ÷ 2</strong>`);
+      return 0;
+   }
+   else if (operator.includes(lastValue) && operator.includes(num)) {
+      showNote(`Operação podera vir a ser invalida por conter operadores binário ou mais de um operadores diferente seguidos um após o outro. <br>Tente Ex: <strong>${lastValue}</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
          alert.removeAttribute("style", "animationName: animacao");
          alert.innerHTML = "";
       },10000);
-
-   } else if (input.value.substring(input.value.length -1) == '×' && operator.includes(num)) {
-      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>2 × 10</strong>`);
-      setTimeout(() => {
-         alert.classList.remove('showAlert');
-         alert.removeAttribute("style", "animationName: animacao");
-         alert.innerHTML = "";
-      },10000);
-
-   } else if (input.value.substring(input.value.length -1) == '+' && operator.includes(num)) {
-      showNote(`Operação podera vir a ser invalida por conter mais de um operador similar um após o outro. Tente Ex: <strong>10 + 10</strong>`);
-      setTimeout(() => {
-         alert.classList.remove('showAlert');
-         alert.removeAttribute("style", "animationName: animacao");
-         alert.innerHTML = "";
-      },10000);
-
-   } else if (input.value.substring(input.value.length -1) == '÷' && operator.includes(num) || input.value.substring(input.value.length -1) == '×' && operator.includes(num)) {
-      showNote(`Operação podera vir a ser invalida por conter operadores juntos um após outro. Tente Ex: <strong>2 × 20</strong> ou <strong>10 ÷ 2</strong>. Erro por <b>÷×<b> estarem juntos`);
-      setTimeout(() => {
-         alert.classList.remove('showAlert');
-         alert.removeAttribute('style', 'animationName: animacao');
-         alert.innerHTML = "";
-      },10000);
-
-   } else if (input.value.substring(input.value.length -1) == '' && num == '.') {
+   }
+   
+   else if (lastValue == '' && num == '.') {
       input.value += '0';
    }
 
    input.value += num;
 
-   if(input.value.substring(input.value.length -1) == '') {
-      return 0;
-   } else {
-      inputArrayValue.push(input.value.substring(input.value.length -1))
-      intermediateValue = inputArrayValue.join('');
-      inputArrayValue.splice(0, input.value.length, intermediateValue);
-   }
+   inputArrayValue.push(input.value.slice(-1))
+   intermediateValue = inputArrayValue.join('');
+   inputArrayValue.splice(0, input.value.length, intermediateValue);
    
    console.log(inputArrayValue);
 }
@@ -92,9 +63,9 @@ function back() {
    console.log(inputArrayValue);
 }
 
-// calcular - calcula o resultado das operações em questão
+// calculate - calcula o resultado das operações em questão
 
-function calcular() {
+function calculate() {
    let finalValue;
    if (intermediateValue == undefined) {
       showNote(`Error!`);
