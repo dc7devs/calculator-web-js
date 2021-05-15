@@ -21,6 +21,9 @@ function insert(num){
       return 0;
 
    } else if (operator.includes(lastValue) && operator.includes(num)) {
+      return;
+   }
+   else if (operator.includes(lastValue) && operator.includes(num)) {
       showNote(`Operação podera vir a ser invalida por conter operadores binário ou mais de um operadores diferente seguidos um após o outro. <br>Tente Ex: <strong>${lastValue}</strong>`);
       setTimeout(() => {
          alert.classList.remove('showAlert');
