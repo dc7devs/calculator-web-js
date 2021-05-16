@@ -81,6 +81,6 @@ ou penas click aqui para execultar a apliacação
 
 Este projeto esta sobe a licença [MIT](https://github.com/Diego-DevsS/calculadora-web-js/blob/main/LICENSE).
 
-Feito por ❤️ Diego Silva
+Feito por Diego Silva 💜
 
 ---
