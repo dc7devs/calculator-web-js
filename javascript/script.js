@@ -79,9 +79,9 @@ function calculate() {
       finalValue = intermediateValue;
    }
 
-   if(finalValue) {
+//    if(finalValue) {
       input.value = eval(finalValue);
-   }
+//    }
 
    inputArrayValue.splice(0, input.value.length);
    inputArrayValue.splice(0, finalValue);
