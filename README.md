@@ -70,7 +70,6 @@ ou penas click aqui para execultar a apliacação
 
 ## 🦸 Autor
 
-[![Instagram](https://img.shields.io/static/v1?label=&message=Instagram&color=white&style=for-the-badge&logo=INSTAGRAM)](https://www.instagram.com/dcdevs/)
 [![Linkedim](https://img.shields.io/static/v1?label=&message=Linkedinm&color=blue&style=for-the-badge&logo=LINKEDIN)](https://www.linkedin.com/in/diego-c-silva-487b171a5/)<br>
 [![Tweeting](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/DiegoSi06829718)
 [![Discord](https://img.shields.io/static/v1?label=&message=D❦•Devs•❦|7498&color=blue&style=-badge&logo=Discord)]()
