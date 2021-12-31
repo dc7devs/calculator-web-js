@@ -17,8 +17,8 @@ html, body {
 
 .container {
    position: relative;
-   height: 650px;
-   width: 370px;
+   height: 610px;
+   width: 350px;
 
    background-color: #111;
    border-radius: 25px;
@@ -86,8 +86,9 @@ html, body {
 }
 
 .screen-calc {
-   min-height:560px;
-   width: 347px;
+   min-height: 520px;
+   /* width: 347px; */
+   width: 337px;
 
    display: flex;
    flex-direction: column;
@@ -178,15 +179,15 @@ html, body {
 
 
 .section-buttons .botao {
-   width: 60px;
-   height: 55px;
-   margin: 6px;
-   line-height: 55px;
+   width: 55px;
+   height: 45px;
+   margin: 5px;
+   line-height: 45px;
 
    border-width: 1px;
    border: none;
    border-radius: 50%;
-   font-size: 22px;
+   font-size: 20px;
    
    color: #fff;
    background-color: #232323;
