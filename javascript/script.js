@@ -79,24 +79,20 @@ function calculate() {
       finalValue = intermediateValue;
    }
 
-//    if(finalValue) {
-      input.value = eval(finalValue);
-//    }
+   // finalValue
 
-   inputArrayValue.splice(0, input.value.length);
-   inputArrayValue.splice(0, finalValue);
+   // inputArrayValue.splice(0, input.value.length);
+   // inputArrayValue.splice(0, finalValue);
 
-   if(intermediateValue.length >= 1 && inputArrayValue.length == 0){
-      inputArrayValue.push(input.value.substring(finalValue));
-   }
-
-   console.log(inputArrayValue);
+   // if(intermediateValue.length >= 1 && inputArrayValue.length == 0){
+   //    inputArrayValue.push(input.value.substring(finalValue));
+   // }
 }
 
 
 // Função mostra uma notificação quando a operação for invalida
 function showNote(message) {
-   if(alert.classList.contains('showAlert') == false){
+   if(!alert.classList.contains('showAlert')){
       alert.classList.add('showAlert');
    }
 
