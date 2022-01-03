@@ -2,7 +2,6 @@ let input = document.querySelector("#displayValue")
 let alert = document.querySelector("#alert")
 
 let inputArrayValue = [];
-// let section = [];
 let intermediantValue
 
 showMessage(`Opa, bora calcular!`);
@@ -78,6 +77,8 @@ window.addEventListener('keydown', e => {
    if(e.keyCode == 46) clean();
    if(e.keyCode == 8) back();
    if(e.keyCode == 13) calculate();
+   
+   intermediantValue = input.value.join('');
 })
 
 // Clear - Limpa o display
