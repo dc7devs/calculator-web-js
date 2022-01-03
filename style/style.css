@@ -4,7 +4,6 @@
    box-sizing: border-box;
    color: #BBB;
 }
-
 html, body {
    width: 100%;
    min-height: 100vh;
@@ -14,7 +13,6 @@ html, body {
    align-items: center;
    justify-content: center;
 }
-
 .container {
    position: relative;
    height: 610px;
@@ -33,7 +31,6 @@ html, body {
 
    box-shadow: -5px 5px 20px rgb(0, 0, 0, .7);
 }
-
 .hardw-cl.sup {
    width: 100%;
    height: 30px;
@@ -65,7 +62,6 @@ html, body {
    background-image: radial-gradient(circle, #000 30%, #fff, #000);
    border: 1px solid #000;
 }
-
 .hardw-cl.sub {
    width: 100%;
    height: 40px;
@@ -75,7 +71,6 @@ html, body {
    align-items: center;
    justify-content: center;
 }
-
 .hardw-cl.sub .home {
    width: 95px;
    height: calc(100% - 10px);
@@ -87,7 +82,6 @@ html, body {
 
 .screen-calc {
    min-height: 520px;
-   /* width: 347px; */
    width: 337px;
 
    display: flex;
@@ -108,7 +102,6 @@ html, body {
    border-radius: 17px;
    
 }
-
 .screen-calc .display #displayValue {
    width: 100%;
    height: 70%;
@@ -128,7 +121,6 @@ html, body {
    background-color: #000;
    border: none;
 }
-
 .screen-calc .display div:nth-child(2) {
    height: 30px;
    width: 100%;
@@ -141,7 +133,6 @@ html, body {
    position: absolute;
    bottom: 0;
 }
-
 .screen-calc .display div p {
    line-height: 30px;
    padding: 10px;
@@ -167,7 +158,6 @@ html, body {
 
    box-shadow: 0 0 0 .05px;
 }
-
 .section-buttons {
    text-align: center;
    align-self: flex-end;
