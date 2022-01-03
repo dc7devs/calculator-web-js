@@ -55,7 +55,6 @@ window.addEventListener('keydown', e => {
       if(e.keyCode == 96) {
 
          if (input.value.length == 1 && input.value.slice(-1) == '0') return;
-         if (input.value.length == 1) return;
       }
 
       if (e.keyCode == 110 && input.value.length == 0) {
