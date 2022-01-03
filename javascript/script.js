@@ -51,6 +51,7 @@ window.addEventListener('keydown', e => {
    // console.log(e.keyCode)
 
    if(e.keyCode == 96 || e.keyCode == 97 || e.keyCode == 98 || e.keyCode == 99 || e.keyCode == 100 || e.keyCode == 101 || e.keyCode == 102 || e.keyCode == 103 || e.keyCode == 104 || e.keyCode == 105 || e.keyCode == 110) {
+      showMessage('<strong style="color: #0f0">Operação em desenvolvimento...<strong>'); return;
       if(e.keyCode == 96) {
 
          if (input.value.length == 1 && input.value.slice(-1) == '0') return;
