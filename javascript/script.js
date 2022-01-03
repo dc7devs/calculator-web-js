@@ -73,12 +73,14 @@ window.addEventListener('keydown', e => {
    if(e.keyCode == 109) input.value += '-';
    if(e.keyCode == 106) input.value += '×';
    if(e.keyCode == 111) input.value += '÷';
-
+   
+   inputArrayValue.push(input.value.slice(-1))
+   intermediantValue = inputArrayValue.join('');
+   inputArrayValue.splice(0, input.value.length, intermediantValue);
+   
    if(e.keyCode == 46) clean();
    if(e.keyCode == 8) back();
    if(e.keyCode == 13) calculate();
-   
-   intermediantValue = input.value.join('');
 })
 
 // Clear - Limpa o display
