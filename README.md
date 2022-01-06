@@ -47,14 +47,15 @@ ou penas click aqui para execultar a apliacação
 
 ## 🛠 Tecnologias
 
-<img src="https://img.shields.io/github/languages/top/Diego-DevsS/datesList?color=red&label=HTML&logo=HTML5&style=for-the-badge"/>
-<img src="https://img.shields.io/github/languages/top/Diego-DevsS/datesList?color=blue&label=CSS&logo=CSS3&style=for-the-badge"/>
-<img src="https://img.shields.io/github/languages/top/Diego-DevsS/datesList?color=yellow&label=JAVASCRIPT&logo=javascript&style=for-the-badge"/>
+- **[HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)**
+- **[CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)**
+- **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)**
+
 
 
 #### **Utilitários**
 
--   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
+- Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
 
 ---
 
