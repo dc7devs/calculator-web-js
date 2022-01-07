@@ -1,8 +1,7 @@
 let input = document.querySelector("#displayValue")
 let alert = document.querySelector("#alert")
 
-let inputArrayValue = [];
-let intermediantValue
+let intermediantValue;
 
 showMessage(`Opa, bora calcular!`);
 
@@ -33,61 +32,47 @@ function insert(num) {
    } else if (num == '(' || num == ')' || num == '%') { // por enquanto
       showMessage('<strong style="color: #0f0">Operação em desenvolvimento...<strong>');
       return;
-   } 
+   }
 
    input.value += num;
-
-   // section.push(input.value.slice(-1))
-   // intermediantValue = section.join('');
-   // section.splice(0, section.length, Number(intermediantValue));
-
-   inputArrayValue.push(input.value.slice(-1))
-   intermediantValue = inputArrayValue.join('');
-   inputArrayValue.splice(0, input.value.length, intermediantValue);
 }
 
 window.addEventListener('keydown', e => {
-   showMessage('<strong style="color: #0f0">Operação em desenvolvimento...<strong>'); return;
-   // console.log(e.key)
-   // console.log(e.keyCode)
-
-   if(e.keyCode == 96 || e.keyCode == 97 || e.keyCode == 98 || e.keyCode == 99 || e.keyCode == 100 || e.keyCode == 101 || e.keyCode == 102 || e.keyCode == 103 || e.keyCode == 104 || e.keyCode == 105 || e.keyCode == 110) {
-      if(e.keyCode == 96) {
+   showMessage('<strong style="color: #0f0">Operação em desenvolvimento...<strong>');
+   
+   if(e.key == 0 || e.key == 1 || e.key == 2 || e.key == 3 || e.key == 4 || e.key == 5 || e.key == 6 || e.key == 7 || e.key== 8 || e.key == 9) {
+      if(e.key == 0) {
 
          if (input.value.length == 1 && input.value.slice(-1) == '0') return;
       }
 
-      if (e.keyCode == 110 && input.value.length == 0) {
+      if (e.key == ',' && input.value.length == undefined) {
+         console.log('teste')
          input.value += '0';
-      } else if (e.keyCode == 110 && input.value.slice(-1) != '') {
+      } else if (e.key == ',' && input.value.slice(-1) != '') {
          for (let i=0; i<input.value.length; i++) {
             if(input.value[i] == '.') {
                return;
             }
          }
       }
-      
+
       input.value += e.key;
    }
 
-   if(e.keyCode == 107) input.value += '+';
-   if(e.keyCode == 109) input.value += '-';
-   if(e.keyCode == 106) input.value += '×';
-   if(e.keyCode == 111) input.value += '÷';
-   
-   inputArrayValue.push(input.value.slice(-1))
-   intermediantValue = inputArrayValue.join('');
-   inputArrayValue.splice(0, input.value.length, intermediantValue);
-   
-   if(e.keyCode == 46) clean();
-   if(e.keyCode == 8) back();
-   if(e.keyCode == 13) calculate();
+   if(e.key == '+') input.value += '+';
+   if(e.key == '-') input.value += '-';
+   if(e.key == '*') input.value += '×';
+   if(e.key == '/') input.value += '÷';
+         
+   if(e.key == 'Delete') clean();
+   if(e.key == 'Backspace') back();
+   if(e.key == 'Enter') calculate();
 })
 
 // Clear - Limpa o display
+
 function clean() {
-   intermediantValue = undefined;
-   inputArrayValue.splice(0, input.value.length);
    if (input.value != "") {
       input.value = "";
    }
@@ -97,14 +82,14 @@ function clean() {
 function back() {
    let resultado = input.value;
    input.value = resultado.substring(0, resultado.length -1);
-
-   inputArrayValue.splice(0, 1, inputArrayValue[0].substring(0, resultado.length -1));
 }
 
 // exibir o resultado no display
 function calculate() {
+   intermediantValue = String(input.value);
    let finalValue;
-   if (intermediantValue == undefined) {
+
+   if (intermediantValue == '') {
       showMessage(`<strong style="color: #a2f52a">Insira uma operação valida!!</strong>`);
       return;
 
@@ -120,13 +105,6 @@ function calculate() {
    }
    
    input.value = eval(finalValue);
-
-   inputArrayValue.splice(0, input.value.length);
-   inputArrayValue.splice(0, finalValue);
-
-   if(intermediantValue.length >= 1 && inputArrayValue.length == 0){
-      inputArrayValue.push(input.value.substring(finalValue));
-   }
 }
 
 
