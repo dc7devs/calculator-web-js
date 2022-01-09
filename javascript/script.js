@@ -1,114 +1,147 @@
-let input = document.querySelector("#displayValue")
-let alert = document.querySelector("#alert")
+'use strict'
 
-let intermediantValue;
+const display = document.getElementById('displayValue');
+// const calcPreview = document.getElementById("calc-preview");
 
-showMessage(`Opa, bora calcular!`);
+const numbers = document.querySelectorAll('[id*=key]');
+const operators = document.querySelectorAll('[id*=Operator]');
+const equal = document.getElementById('equal');
+const cleanDisplay = document.getElementById('cleanDisplay');
+const clearCalculation = document.getElementById('clearCalculation');
+const backspace = document.getElementById('backspace');
+const decimal = document.getElementById('decimal');
 
-function insert(num) {
-   // Condicionamento para a inserção
-   let lastValue = input.value.slice(-1);
-   operator = ['÷', '×', '+', '-']
+const alert = document.querySelector("#alert");
+showMessage(`Ola, seja bem vindo!`);
 
-   if (input.value.length == 0 && operator.slice(0, 3).includes(num)) {
-       return;
+let newValue = true;
+let operator;
+let previousNumber;
 
-   } else if (input.value.length == 1 && lastValue == '0' && num == '0') {
-      return;
+const beggingOperation = () => operator !== undefined;
 
-   } else if (operator.includes(lastValue) && operator.includes(num)) {
-      if(input.value.length > 1)
-         input.value = input.value.replace(/.$/, num);
-      return;
-         
-   } else if (input.value.length == 0 && num == '.') {
-      input.value += "0";
-   } else if (lastValue != '' && num == '.') {
-      for (let i=0; i<input.value.length; i++) {
-         if(input.value[i] == '.') {
-            return;
-         }
+const calculate = () => {
+   if(beggingOperation()) {
+      const currentNumber = parseFloat(display.value);
+
+      newValue = true;
+      // const resultado = eval(`${previousNumber}${operator}${currentNumber}`)
+      // updateDisplay(resultado);
+
+      if(operator == '+') {
+         updateDisplay(previousNumber + currentNumber);
       }
-   } else if (num == '(' || num == ')' || num == '%') { // por enquanto
-      showMessage('<strong style="color: #0f0">Operação em desenvolvimento...<strong>');
-      return;
-   }
-
-   input.value += num;
-}
-
-window.addEventListener('keydown', e => {
-   showMessage('<strong style="color: #0f0">Operação em desenvolvimento...<strong>');
-   
-   if(e.key == 0 || e.key == 1 || e.key == 2 || e.key == 3 || e.key == 4 || e.key == 5 || e.key == 6 || e.key == 7 || e.key== 8 || e.key == 9) {
-      if(e.key == 0) {
-
-         if (input.value.length == 1 && input.value.slice(-1) == '0') return;
+      else if (operator == '-') {
+         updateDisplay(previousNumber - currentNumber);
+      }  else if (operator == '*') {
+         updateDisplay(previousNumber * currentNumber);
+      }  else if (operator == '/') {
+         updateDisplay(previousNumber / currentNumber);
+      } else if (operator == '%') {
+         updateDisplay(previousNumber/100 * currentNumber);
       }
-
-      if (e.key == ',' && input.value.length == undefined) {
-         console.log('teste')
-         input.value += '0';
-      } else if (e.key == ',' && input.value.slice(-1) != '') {
-         for (let i=0; i<input.value.length; i++) {
-            if(input.value[i] == '.') {
-               return;
-            }
-         }
-      }
-
-      input.value += e.key;
-   }
-
-   if(e.key == '+') input.value += '+';
-   if(e.key == '-') input.value += '-';
-   if(e.key == '*') input.value += '×';
-   if(e.key == '/') input.value += '÷';
-         
-   if(e.key == 'Delete') clean();
-   if(e.key == 'Backspace') back();
-   if(e.key == 'Enter') calculate();
-})
-
-// Clear - Limpa o display
-
-function clean() {
-   if (input.value != "") {
-      input.value = "";
    }
 }
 
-// back - deleta o ultimo caracater inserido
-function back() {
-   let resultado = input.value;
-   input.value = resultado.substring(0, resultado.length -1);
-}
-
-// exibir o resultado no display
-function calculate() {
-   intermediantValue = String(input.value);
-   let finalValue;
-
-   if (intermediantValue == '') {
-      showMessage(`<strong style="color: #a2f52a">Insira uma operação valida!!</strong>`);
-      return;
-
-   } else if(intermediantValue.includes('÷')){
-      
-      finalValue = intermediantValue.replace('÷', '/');
-
-   } else if (intermediantValue.includes('×')){
-      finalValue = intermediantValue.replace('×', '*');
-
+const updateDisplay = (text) => {
+   if(newValue) {
+      display.value = text;
+      newValue = false;
    } else {
-      finalValue = intermediantValue;
+      display.value += text;
    }
-   
-   input.value = eval(finalValue);
 }
 
+const insertNumber = (event) => updateDisplay(event.target.textContent);
+numbers.forEach(number => number.addEventListener('click', insertNumber));
 
-// Função mostra uma notificação quando a operação for invalida
+const selectOperator = (event) => {
+   if(!newValue) {
+
+      calculate();
+
+      newValue = true;
+      if (event.target.id == 'splitOperator') operator = '/';
+      else if (event.target.id == 'multiplyOperator') operator = '*';
+      else if (event.target.id == 'subtractOperator') operator = '-';
+      else if (event.target.id == 'addOperator') operator = '+';
+      else if (event.target.id == 'percentageOperator') operator = '%';
+
+      previousNumber = parseFloat(display.value);
+   }
+}
+operators.forEach(operator => operator.addEventListener('click', selectOperator));
+
+const activateEqual = () => {
+   calculate();
+
+   operator = undefined;
+}
+equal.addEventListener('click', activateEqual)
+
+const cleanDisplayFunction = () => display.value = '';
+cleanDisplay.addEventListener('click', cleanDisplayFunction);
+
+const clearCalculationFunction = () => {
+   cleanDisplayFunction();
+   operator = undefined;
+   newValue = true;
+   previousNumber = undefined;
+}
+clearCalculation.addEventListener('click', clearCalculationFunction);
+
+const backspaceFunction = () => {
+   display.value = display.value.slice(0, -1);
+}
+backspace.addEventListener('click', backspaceFunction);
+
+const existentDecimal = () => display.value.indexOf('.') !== -1;
+const existentValue = () => display.value.length > 0;
+
+const decimalFunction = () => {
+   if(!existentDecimal()) {
+      if(existentValue()) {
+         updateDisplay('.');
+      } else {
+         updateDisplay('0.');
+      }
+   }
+}
+decimal.addEventListener('click', decimalFunction);
+
+const mapaTeclado = {
+   '0'         : 'key0',
+   '1'         : 'key1',
+   '2'         : 'key2',
+   '3'         : 'key3',
+   '4'         : 'key4',
+   '5'         : 'key5',
+   '6'         : 'key6',
+   '7'         : 'key7',
+   '8'         : 'key8',
+   '9'         : 'key9',
+   '/'         : 'splitOperator',
+   '*'         : 'multiplyOperator',
+   '-'         : 'subtractOperator',
+   '+'         : 'addOperator',
+   '%'         : 'percentageOperator',
+   '='         : 'equal',
+   'Enter'     : 'equal',
+   'Backspace' : 'backspace',
+   'C'         : 'cleanDisplay',
+   'c'         : 'cleanDisplay',
+   'Escape'    : 'clearCalculation',
+   '.'         : 'decimal'
+}
+
+const mapearTelcado = (event) => {
+   const tecla = event.key;
+
+   const allowedKey = () => Object.keys(mapaTeclado).indexOf(tecla) !== -1;
+   if(allowedKey()) document.getElementById(mapaTeclado[tecla]).click();
+}
+document.addEventListener('keydown', mapearTelcado);
+
 function showMessage(message) {
    if(!alert.classList.contains('showAlert')){
       alert.classList.add('showAlert');
@@ -122,10 +155,4 @@ function showMessage(message) {
       alert.removeAttribute("style", "animationName: animacao");
       alert.innerHTML = "";
    }, 3000);
-
-} // showMessage(html)
-
-/**  ## Implementations
- * [] Previzualização do resultado no <p class="clac-preview">
- * [] debug KeyboardEvent
- */
+}

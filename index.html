@@ -23,55 +23,76 @@
          <div class="display">
             <input id="displayValue" type="text" value="" disabled placeholder="0"/>
             <div>
-               <p hidden class="calc-preview"></p>
-               <i class="fas fa-backspace" onclick="back()"></i>
+               <p id="calc-preview" class="preview"></p>
+               <i id="backspace" class="fas fa-backspace"></i>
             </div>
          </div>
          <hr/>
-         <div class="section-buttons">
-            <table class="btns">
-               <tr>
-                  <!-- Clear -->
-                  <td><button class="botao red" onclick="clean()"><i class="fab fa-codiepie"></i></button></td>
-                  <td><button class="botao green" onclick="insert('(')" style="font-weight: bold">(</button></td>
-                  <td><button class="botao green" onclick="insert(')')" style="font-weight: bold">)</button></td>
-                  <!--divisão -->
-                  <td><button class="botao green operator" onclick="insert('÷')"><i class="fas fa-divide"></i></button></td>
-               </tr>
-            
-               <tr>
-                  <td><button class="botao" onclick="insert(9)">9</button></td>
-                  <td><button class="botao" onclick="insert(8)">8</button></td>
-                  <td><button class="botao" onclick="insert(7)">7</button></td>
-                  <!--Multipliacação-->
-                  <td><button class="botao green operator" onclick="insert('×')"><i class="fas fa-times"></i></button></td>
-               </tr>
-            
-               <tr>
-                  <td><button class="botao" onclick="insert(6)">6</button></td>
-                  <td><button class="botao" onclick="insert(5)">5</button></td>
-                  <td><button class="botao" onclick="insert(4)">4</button></td>
-                  <!--Subtração-->
-                  <td><button class="botao green operator" onclick="insert('-')"><i class="fas fa-minus"></i></button></td>
-               </tr>
-            
-               <tr>
-                  <td><button class="botao" onclick="insert(3)">3</button></td>
-                  <td><button class="botao" onclick="insert(2)">2</button></td>
-                  <td><button class="botao" onclick="insert(1)">1</button></td>
-                  <!--Soma-->
-                  <td><button class="botao green operator" onclick="insert('+')"><i class="fas fa-plus"></i></button></td>
-               </tr>
-            
-               <tr>
-                  <td><button class="botao" onclick="insert('.')">.</button></td>
-                  <td><button class="botao" onclick="insert(0)">0</button></td>
-                  <td><button class="botao green" onclick="insert('%')">&#37;</button></td> <!-- percentage  <i class="fas fa-percentage"></i> -->
-                  <!--igualdade-->
-                  <td><button class="botao equals" onclick="calculate()"><i class="fas fa-equals"></i></button></td> <!-- -->
-               </tr>
-            </table>
-         </div>
+         <table class="btns">
+            <tr>
+               <!-- Clear -->
+               <td id="cleanDisplay" class="botao" style="color: #aaa; font-weight: bold;">CE</td>
+               <td id="clearCalculation" class="botao" style="color: #aaa; font-weight: bold;">C</i>
+               </td>
+               <td id="percentageOperator" class="botao green percentage">
+                  <i id="percentageOperator" class="fas fa-percentage"></i>
+               </td>
+               
+               <!--divisão -->
+               <td id="splitOperator" class="botao green operator">
+                  <i id="splitOperator" class="fas fa-divide"></i>
+               </td>
+            </tr>
+         
+            <tr>
+               <td id="key9" class="botao">9</td>
+               <td id="key8" class="botao">8</td>
+               <td id="key7" class="botao">7</td>
+
+               <!--Multipliacação-->
+               <td id="multiplyOperator" class="botao green operator">
+                  <i id="multiplyOperator" class="fas fa-times"></i>
+               </td> 
+            </tr>
+         
+            <tr>
+               <td id="key6" class="botao">6</td>
+               <td id="key5" class="botao">5</td>
+               <td id="key4" class="botao">4</td>
+
+               <!--Subtração-->
+               <td id="subtractOperator" class="botao green operator">
+                     <i id="subtractOperator" class="fas fa-minus"></i>
+               </td>
+            </tr>
+         
+            <tr>
+               <td id="key3" class="botao">3</td>
+               <td id="key2" class="botao">2</td>
+               <td id="key1" class="botao">1</td>
+
+               <!--adição-->
+               <td id="addOperator" class="botao green operator">
+                  <i id="addOperator" class="fas fa-plus"></i>
+               </td>
+            </tr>
+         
+            <tr>
+               <!-- GitHub -->
+               <td class="botao">
+                  <a href="https://github.com/Diego-DevsS" target="__blank">
+                  <i class="fab fa-github-alt"></i>
+                  </a>
+               </td>
+               <td id="key0" class="botao">0</td>
+               <td id="decimal" class="botao">.</td>
+               
+               <!--igualdade-->
+               <td id="equal" class="botao equals">
+                  <i id="equal" class="fas fa-equals"></i>
+               </td>
+            </tr>
+         </table>
       </div>
 
       <div class="hardw-cl sub">
